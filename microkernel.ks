@@ -142,10 +142,11 @@ rm -f /var/lib/random-seed
 # but for now we can ensure that we generate new keys when SSHD is finally
 # fined up on the nodes...
 #
-# We also disable SSHd automatic startup in the final image.
 echo " * disable sshd and purge existing SSH host keys"
 rm -f /etc/ssh/ssh_host_*key{,.pub}
-systemctl disable sshd.service
+# Allow root login
+sed -i 's/#PermitRootLogin yes/PermitRootLogin yes/g' /etc/ssh/sshd_config
+systemctl restart sshd.service
 
 echo " * removing python precompiled *.pyc files"
 find /usr/lib64/python*/ -name *pyc -print0 | xargs -0 rm -f
