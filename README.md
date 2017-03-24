@@ -19,7 +19,7 @@ installed from the network infrastructure server role, with the compilers,
 rpmbuild tools, and system tools group selected.
 
     yum -y install ruby livecd-tools
-    gem update --system && gem install rake bundler json_pure
+    gem update --system && gem install json_pure && gem install rake bundler
 
 Disable SELinux when building the image:
 
