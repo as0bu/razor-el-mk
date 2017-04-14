@@ -18,12 +18,12 @@ First, install the necessary system dependencies.  The system itself has been
 installed from the network infrastructure server role, with the compilers,
 rpmbuild tools, and system tools group selected.
 
-    yum -y install ruby livecd-tools
-    gem update --system && gem install json_pure && gem install rake bundler
+    sudo yum -y install ruby livecd-tools
+    sudo gem install json_pure && sudo gem update --system && sudo gem install rake bundler
 
 Disable SELinux when building the image:
 
-    setenforce 0
+    sudo setenforce 0
 
 Then, install project dependencies.  Installing into a local path will require
 the use of `bundle exec` when starting project executables.
